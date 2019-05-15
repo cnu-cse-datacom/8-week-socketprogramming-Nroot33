@@ -13,11 +13,11 @@ print("FIle Size : " , total_size.decode())
 
 current_size = 0
 
-with open(name, 'w') as recive_file :
+with open(name, 'rw') as recive_file :
     for r in range(0,int(total_size),1024):
         current_size += 1024
         data, _ = s.recvfrom(1024)
-        recive_file.write(data.decode())
+        recive_file.write(data)
         percent = current_size/int(total_size)*100;
         if(percent > 100):
             current_size = total_size.decode()
