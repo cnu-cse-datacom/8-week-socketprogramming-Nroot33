@@ -17,11 +17,11 @@ s.sendto(str(total_size).encode(),(host,int(port)))
 
 current_size = 0
 
-with open(name, 'r') as send_file: #name이란 파일을, 읽기전용형식 "r"로 send_file라는 이름으로 연다.
+with open(name, 'rb') as send_file: #name이란 파일을, 읽기전용형식 "r"로 send_file라는 이름으로 연다.
     for r in range(0,total_size,1024):
         current_size += 1024
         line = send_file.read(1024)
-        s.sendto(line.encode(),(host,int(port)))
+        s.sendto(line,(host,int(port)))
         percent = current_size/total_size*100;
         if(percent > 100):
             current_size = total_size
